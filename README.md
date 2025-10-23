@@ -8,7 +8,7 @@ This repository is an **educational ROS 2 workspace** built for learning and exp
 
 The workspace demonstrates how to create custom service and action interfaces, build Python nodes that interact with them, and test them in simulation.
 
----
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 ## 📁 Project Structure
 
@@ -34,10 +34,8 @@ colcon1_ws/
 │
 └── .gitignore
 
-yaml
-Copy code
 
----
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 ## ⚙️ Requirements
 
@@ -45,7 +43,7 @@ Copy code
 - **colcon** build tool  
 - **TurtleBot3 packages**  
 - **Gazebo simulation environment**
-
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
 Install missing dependencies if needed:
 ```bash
 sudo apt install ros-foxy-turtlebot3* ros-foxy-gazebo-ros-pkgs
@@ -53,13 +51,11 @@ sudo apt install ros-foxy-turtlebot3* ros-foxy-gazebo-ros-pkgs
 From the root of the workspace (colcon1_ws):
 
 bash
-Copy code
 colcon build --symlink-install
 source install/setup.bash
 If you want to build a single package only (to avoid build errors from others):
 
 bash
-Copy code
 colcon build --packages-select move_robot
 🧩 Package Summaries
 1. add_two_ints_srv
@@ -70,11 +66,10 @@ Service definition: my_own_service/srv/AddTwoInt.srv
 Server: Waits for two integers, returns their sum.
 
 Client: Sends two integers, logs the result.
-
+___________________________________________________________________________________________________________________________________________________________________________________________________________
 Example usage:
 
 bash
-Copy code
 ros2 run add_two_ints_srv server
 ros2 run add_two_ints_srv client 3 7
 2. reach_wall_action
@@ -82,8 +77,7 @@ Defines a custom action interface used to make a robot move forward until it rea
 
 Action file: ReachWall.action
 
-text
-Copy code
+
 # Goal
 float32 target_distance
 ---
@@ -102,7 +96,6 @@ The client sends a goal and receives continuous feedback on the remaining distan
 Run the server and client:
 
 bash
-Copy code
 # Terminal 1 - Start Gazebo simulation
 ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage1.launch.py
 
@@ -114,19 +107,16 @@ ros2 action send_goal /reach_wall reach_wall_action/action/ReachWall "{target_di
 If you want to reset the simulation:
 
 bash
-Copy code
 ros2 service call /reset_world std_srvs/srv/Empty {}
 🐢 Simulation Integration
 You can visualize everything in Gazebo using TurtleBot3:
 
 bash
-Copy code
 export TURTLEBOT3_MODEL=burger
 ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage1.launch.py
 Active topics:
 
 bash
-Copy code
 ros2 topic list
 Expected key topics:
 
@@ -135,20 +125,18 @@ Expected key topics:
 /scan – LIDAR data
 
 /odom – Odometry info
-
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
 💡 Tips & Troubleshooting
 Always source install/setup.bash before running nodes.
 
 To rebuild cleanly:
 
 bash
-Copy code
 rm -rf build install log
 colcon build --packages-select <package_name>
 Check interface definitions:
 
 bash
-Copy code
 ros2 interface show reach_wall_action/action/ReachWall
 If the robot isn’t moving, ensure:
 
@@ -157,7 +145,7 @@ If the robot isn’t moving, ensure:
 Gazebo simulation is running.
 
 You’ve launched the correct TurtleBot3 model.
-
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
 📘 Educational Goal
 This project is intended for anyone learning ROS2 fundamentals.
 It builds understanding step by step:
