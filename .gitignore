@@ -1,0 +1,18 @@
+# ROS2 build and install folders
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VSCode or JetBrains IDE configs
+.vscode/
+.idea/
+
+# Temporary files
+*.swp
+*.bak
+src/turtlebot3/
+src/turtlebot3_simulations/
